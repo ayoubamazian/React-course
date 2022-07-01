@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { EmailAndPasswordAuth, CreateUserDocument } from "../utils/Firebase";
+import FormInput from "../form-Input/formInput";
+import Button from "../Button/Button"
+import "./signup.scss"
 
 const defaultFormFields = {
     displayName:"",
@@ -36,7 +39,7 @@ const SignUp = () => {
 
 
         } catch (error) {
-            if(error.code == "auth/email-already-in-use"){
+            if(error.code === "auth/email-already-in-use"){
                 alert('email already in use');
             }
             console.log('user creation encoutered an error '+error)
@@ -44,22 +47,19 @@ const SignUp = () => {
     }
 
     return ( 
-        <div>
-            <h1>Sign-Up With your e-mail and password</h1>
+        <div className="sign-up-container">
+            <h2>Don't have an account?</h2>
+            <span>Sign up with your email and password</span>
             <form onSubmit={signuphandler}>
-                <label htmlFor="">Display Name</label>
-                <input type="text" onChange={handlechange} name="displayName" value={displayName} required/>
+                <FormInput label='Display Name' type="text" onChange={handlechange} name="displayName" value={displayName} required/>
 
-                <label htmlFor="">E-mail</label>
-                <input type="email" onChange={handlechange} name="email" value={email} required/>
+                <FormInput label='email' type="email" onChange={handlechange} name="email" value={email} required/>
 
-                <label htmlFor="">Passwor</label>
-                <input type="password" onChange={handlechange} name="password" value={password} required/>
+                <FormInput label='password' type="password" onChange={handlechange} name="password" value={password} required/>
 
-                <label htmlFor="">Confirm Password</label>
-                <input type="password" onChange={handlechange} name="confirmpassword" value={confirmpassword} required/>
+                <FormInput label='Confirm Password' type="password" onChange={handlechange} name="confirmpassword" value={confirmpassword} required/>
 
-                <input type="submit" value='Sign-up'/>
+                <Button chidren={'Sign Up'} buttonType='inverted' type="submit" />
             </form>
         </div>
      );

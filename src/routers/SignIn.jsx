@@ -5,7 +5,7 @@ import SignUp from "../sign-up/SignUp";
 const SignIn = () => {
     const logGoogle = async () =>{
         const {user} = await signInpopup();
-        const userdoc = await CreateUserDocument(user);
+        await CreateUserDocument(user);
     }
 
     return ( 
