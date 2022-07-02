@@ -23,6 +23,10 @@ const SignUp = () => {
         setFormFields({...formFields,[name]:value})
     }
 
+    const resetformFields = () => {
+        setFormFields(defaultFormFields);
+    }
+
     const signuphandler = async (event) =>{
         event.preventDefault();
         if(password !== confirmpassword){
@@ -31,6 +35,7 @@ const SignUp = () => {
         }
 
         try {
+            resetformFields();
            const { user } = await EmailAndPasswordAuth(email,password)
 
            console.log(user)
@@ -59,7 +64,7 @@ const SignUp = () => {
 
                 <FormInput label='Confirm Password' type="password" onChange={handlechange} name="confirmpassword" value={confirmpassword} required/>
 
-                <Button chidren={'Sign Up'} buttonType='inverted' type="submit" />
+                <Button buttonType='inverted' type="submit">Sign Up</Button>
             </form>
         </div>
      );
