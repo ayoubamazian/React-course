@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button"
 import FormInput from "../form-Input/formInput";
-import { signInpopup,CreateUserDocument, SignInEmailAndPasswordAuth } from "../utils/Firebase";
+import { signInpopup, SignInEmailAndPasswordAuth } from "../utils/Firebase";
 import "./SignIn.scss"
 
 const defaultFormFields = {
@@ -20,23 +20,20 @@ const SignIn = () => {
         setChamps({...Champs,[name]:value})
     }
 
-
     const resetformFields = () => {
         setChamps(defaultFormFields);
     }
 
     const logGoogle = async () =>{
-        const {user} = await signInpopup();
-        await CreateUserDocument(user);
+        await signInpopup();
     }
 
-    const signuphandler = async (event) =>{
+    const signinhandler = async (event) =>{
         event.preventDefault();
 
         try {
+            await SignInEmailAndPasswordAuth(email,password);
             resetformFields();
-            const response = await SignInEmailAndPasswordAuth(email,password)
-            console.log(response)
 
         } catch (error) {
             if(error.code === "auth/user-not-found"){
@@ -55,7 +52,7 @@ const SignIn = () => {
         <div className="sign-up-container">
             <h2>Already have an account</h2>
             <span>Sign up with your email and password</span>
-            <form onSubmit={signuphandler}>
+            <form onSubmit={signinhandler}>
                 <FormInput label='email' type="email" onChange={handlechange}  name="email" value={email} required/>
 
                 <FormInput label='password' type="password" onChange={handlechange}  name="password" value={password} required/>
