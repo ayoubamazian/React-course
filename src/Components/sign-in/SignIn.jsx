@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button"
 import FormInput from "../form-Input/formInput";
-import { signInpopup, SignInEmailAndPasswordAuth } from "../utils/Firebase";
+import { signInpopup, SignInEmailAndPasswordAuth } from "../../utils/Firebase";
 import "./SignIn.scss"
 
 const defaultFormFields = {

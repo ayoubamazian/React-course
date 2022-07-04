@@ -1,5 +1,5 @@
-import SignUp from "../sign-up/SignUp";
-import SignIn from "../sign-in/SignIn";
+import SignUp from "../Components/sign-up/SignUp";
+import SignIn from "../Components/sign-in/SignIn";
 
 import "./authentication.scss"; 
 
