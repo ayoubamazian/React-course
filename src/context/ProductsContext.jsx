@@ -7,7 +7,6 @@ export const ProductsContext = createContext({
 })
 
 export const ProductsProvider = ({children}) => {
-
     const [products,setProduct] = useState({});
 
     useEffect(()=>{
