@@ -1,4 +1,4 @@
-import CategoryItems from "../category/CategoryItems";
+import CategoryItems from "../categoryItems/CategoryItems";
 
 const Directory = ({categories}) => {
     return ( 
